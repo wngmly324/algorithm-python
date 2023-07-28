@@ -1,14 +1,14 @@
 n = int(input())
 cnt = n
 
-while n:
-    s = input()
-    for i in range(len(s)-1):
-        if s[i] == s[i+1]:
+for i in range(n):
+    word = input()
+
+    for j in range(len(word)-1):
+        if word[j] == word[j+1]:
             pass
-        elif s[i] in s[i+1:]:
+        elif word[j] in word[j+1:]:
             cnt -= 1
             break
-    n -= 1
 
 print(cnt)
