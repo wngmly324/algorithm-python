@@ -1,15 +1,18 @@
+square = list([0] * 101 for _ in range(101))
+
 n = int(input())
-paper = [[0] * 101 for _ in range(101)]
 
 for _ in range(n):
-    x, y = map(int, input().split())
+    a, b = map(int, input().split())
 
-    for i in range(y, y+10):
-        for j in range(x, x+10):
-            paper[i][j] = 1
+    for i in range(a, a+10):
+        for j in range(b, b+10):
+            square[i][j] = 1
 
-cnt = 0
-for i in paper:
-    cnt += i.count(1)
+result = 0
+for i in range(101):
+    for j in range(101):
+        if square[i][j] == 1:
+            result += 1
 
-print(cnt)
+print(result)
