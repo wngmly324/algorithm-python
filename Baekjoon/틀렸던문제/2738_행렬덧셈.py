@@ -1,15 +1,17 @@
 n, m = map(int, input().split())
-a = [[0] * m for _ in range(n)]
+a = []
+b = []
 
 for i in range(n):
-    inp = list(map(int, input().split()))
-    for j in range(m):
-        a[i][j] = inp[j]
+    data = list(map(int, input().split()))
+    a.append(data)
 
 for i in range(n):
-    inp2 = list(map(int, input().split()))
-    for j in range(m):
-        a[i][j] += inp2[j]
+    data = list(map(int, input().split()))
+    b.append(data)
 
-for i in a:
-    print(*i)
+for i in range(n):
+    for j in range(m):
+        res = a[i][j] + b[i][j]
+        print(res, end=' ')
+    print()
