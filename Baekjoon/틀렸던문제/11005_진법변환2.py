@@ -1,10 +1,9 @@
 n, b = map(int, input().split())
-
-nums = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-ans = ''
+s = ''
+arr = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 while n:
-    ans = nums[n % b] + ans
+    s += str(arr[n % b])
     n //= b
 
-print(ans)
+print(s[::-1])
