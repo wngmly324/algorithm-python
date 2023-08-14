@@ -1,18 +1,21 @@
 n = int(input())
 m = int(input())
-data = []
 
+num_sum = 0
+result = []
 for i in range(n, m+1):
     no = 0
     if i > 1:
-        for j in range(2, i):
+        for j in range(2, i+1):
             if i % j == 0:
                 no += 1
-        if no == 0:
-            data.append(i)
 
-if len(data) == 0:
+        if no == 1:
+            num_sum += j
+            result.append(i)
+
+if num_sum == 0:
     print(-1)
 else:
-    print(sum(data))
-    print(min(data))
+    print(num_sum)
+    print(result[0])
