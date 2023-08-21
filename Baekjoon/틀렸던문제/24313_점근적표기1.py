@@ -1,11 +1,10 @@
-a1, a0 = map(int, input().split())
+a1, a2 = map(int, input().split())
 c = int(input())
-n0 = int(input())
+n = int(input())
 
-f = (a1 * n0) + a0
-g = n0
+fn = (a1 * n) + a2
 
-if f <= (c * g) and a1 <= c:
+if fn <= (c * n) and a1 <= c:
     print(1)
 else:
     print(0)
