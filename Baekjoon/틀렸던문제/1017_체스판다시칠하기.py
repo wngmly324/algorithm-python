@@ -1,32 +1,28 @@
-import sys
-
-n, m = map(int, sys.stdin.readline().split())
-graph = [list(map(str, sys.stdin.readline().split())) for _ in range(n)]
+n, m = map(int, input().split())
+board = []
 cnt = []
 
-# 반복문을 통해 체스판을 확인(8*8 범위로 자른다)
-for i in range(n-7):
-    for j in range(m-7):
-        w = 0   # w로 시작하는 경우
-        b = 0   # b로 시작하는 경우
+for i in range(n):
+    board.append(input())
 
-        # 8*8 범위 체스판을 확인
-        for k in range(i, i+8):
-            for l in range(j, j+8):
-                # 행과 열의 합이 짝수, 홀수이면 각각 일정한 색을 가지게 된다.
-                if (l+k) % 2 ==0:
-                    if graph[k][l] != 'W':
-                        w += 1
+for a in range(n-7):
+    for b in range(m-7):                    # 8*8로 자르기 위해, -7을 해준다.
+        w_index = 0                         # 흰색으로 시작
+        b_index = 0                         # 검은색으로 시작
+        for i in range(a, a+8):             # 시작지점
+            for j in range(b, b+8):         # 시작지점
+                if (i+j) % 2 == 0:          # 짝수인 경우
+                    if board[i][j] != 'W':  # W가 아니면, 즉 B이면
+                        w_index += 1        # W로 칠하는 개수
                     else:
-                        b += 1
-                else:
-                    if graph[k][l] != 'B':
-                        w += 1
+                        b_index += 1        # B로 칠하는 개수
+                else:                       # 홀수인 경우
+                    if board[i][j] != 'W':  # W가 아니면, 즉 B이면
+                        b_index += 1        # B로 칠하는 개수
                     else:
-                        b += 1
+                        w_index += 1        # W로 칠하는 개수
 
-        cnt.append(w)
-        cnt.append(b)
+        cnt.append(w_index)              # W로 시작할 때 경우의 수
+        cnt.append(b_index)              # B로 시작할 떼 경우의 수
 
-# 일정한 색 중에 제일 적은 다른 색의 개수를 출력
 print(min(cnt))
